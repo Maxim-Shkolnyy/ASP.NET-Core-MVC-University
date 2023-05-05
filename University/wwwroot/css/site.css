@@ -1,0 +1,132 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: bisque;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+    .container div {
+        flex: 1 0 30%;
+        margin: 10px;
+    }
+
+@media (min-width: 600px) {
+    .container div {
+        flex-basis: 30%;
+    }
+}
+
+@media (min-width: 900px) {
+    .container div {
+        flex-basis: 20%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container div {
+        flex-basis: 14%;
+    }
+}
+
+.courseWrapper {
+    flex-basis: 100%;
+    align-items: center;
+}
+
+.course {
+    display: inline-block;
+    background-color: burlywood;
+    color: white;
+    padding: 10px;
+    height: 175pt;
+    width: 175pt;
+    border-radius: 7px;
+    position: relative;
+}
+
+a.course:hover {
+    background-color: bisque;
+}
+
+.bottons {
+    text-align: center;
+    padding: 0;
+}
+
+.infoButton, .nestedListButton {
+    display: inline-block;
+    width: 40%;
+    margin: 0 5%;
+}
+
+.infoButton {
+    /* ReSharper disable once UnexpectedValue */
+    margin-left: 10px auto;
+    width: 92%;
+    border-radius: 7px;
+    background-color: darkgoldenrod;
+}
+
+.nestedListBotton {
+    margin-right: 10px;
+    width: 92%;
+    border-radius: 7px;
+    background-color: darkgoldenrod;
+}
+
+.infoButton:hover {
+    color: gold;
+    box-shadow: 0 0 0 3px #cde;
+}
+
+.nestedListBotton:hover {
+    color: gold;
+    box-shadow: 0 0 0 3px #cde;
+}
+
+ul.pagedList li {
+    margin: 0 auto;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.course a {
+    color: white;
+    width: 100%;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gold;
+}
+
+.TempMessage {
+    color: red;
+}
+
+.pagination {
+    margin: 0 auto;
+    display: inline-block;
+    overflow: hidden;
+}

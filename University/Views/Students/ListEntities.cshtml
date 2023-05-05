@@ -1,0 +1,36 @@
+﻿@model (IEnumerable<University.Infrasructure.Models.StudentModel>StudentsList, int NumPages, int CurrentPage)
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a href="@Url.Action("EditStudent", "Students")">Add student</a>
+
+@if (TempData["message"] != null)
+{
+    <div class="TempMessage">@TempData["message"]</div> 
+}
+
+<div class="container">
+
+    @foreach (var student in Model.StudentsList)
+{
+var cardModel = new University.MVC.Models.CardViewModel
+        {
+            Title = $"Student {student.Id}",
+            FirstName = student.FirstName,
+            LastName = student.LastName,                    
+            InfoURL = Url.Action("InfoStudent", "Students", new { Id = student.Id }),
+            
+        };
+
+    @Html.Partial("_CardInfoEdit", cardModel)
+
+}
+</div>
+
+<div class="pagination">
+    @await Html.PartialAsync("_PagedList", (Model.NumPages, Model.CurrentPage))
+</div>

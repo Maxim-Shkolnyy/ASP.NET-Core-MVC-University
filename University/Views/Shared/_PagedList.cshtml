@@ -1,0 +1,129 @@
+﻿@model (int NumPages, int CurrentPage)
+
+
+@{
+    int currentPage = Model.CurrentPage;
+int totalPages = Model.NumPages;
+    string Controller = this.ViewContext.RouteData.Values["controller"]?.ToString();
+    int previous = 0;
+int next = 0;
+}
+
+@if (totalPages <= 5)
+{
+    @for (int i = 1; i <= totalPages; i++)
+{
+    @if (i == currentPage)
+    {
+        <span>@i</span>
+    }
+    else
+    {
+        <a href="@Url.Action("ListEntities", Controller, new { Page = i })">@i</a>
+    }
+}
+}
+else
+{
+    @*@for (int i = 1; i <= totalPages; i++)
+    {*@
+previous = currentPage - 1;
+next = currentPage + 1;
+
+    @if (currentPage < 2)
+{
+    <text>1</text>
+    <a href="@Url.Action("ListEntities", Controller, new { Page = 2 })">2</a>
+    <a href="@Url.Action("ListEntities", Controller, new { Page = 3 })">3</a>
+    <text> ... </text>
+    <a href="@Url.Action("ListEntities", Controller, new { Page = totalPages })">@totalPages</a>
+
+}
+else if (currentPage < totalPages - 1)
+{
+    <a href="@Url.Action("ListEntities", Controller, new { Page = previous })">@previous</a>
+    <span>@currentPage</span>
+    <a href="@Url.Action("ListEntities", Controller, new { Page = next })">@next</a>
+    <text> ... </text>
+    <a href="@Url.Action("ListEntities", Controller, new { Page = totalPages })">@totalPages</a>
+}
+else if (currentPage == totalPages - 1)
+{
+    <a href="@Url.Action("ListEntities", Controller, new { Page = previous })">@previous</a>
+    <span>@currentPage</span>
+    <text> ... </text>
+    <a href="@Url.Action("ListEntities", Controller, new { Page = totalPages })">@totalPages</a>
+
+}
+else if (currentPage >= totalPages)
+{
+    <a href="@Url.Action("ListEntities", Controller, new { Page = 1 })">1</a>
+    <text> ... </text>
+    <a href="@Url.Action("ListEntities", Controller, new { Page = previous })">@previous</a>
+    <span>@currentPage</span>
+}
+}
+
+
+
+
+
+@*else
+    {
+        <a href="@Url.Action("ListEntities", Controller, new { Page = totalPages })">@totalPages</a>
+    }
+    @*}*@
+
+
+
+
+
+
+
+
+
+
+
+
+@*@if (currentPage >= 2 || currentPage != totalPages)
+        {
+            previous = currentPage - 1;
+            next = currentPage + 1;
+
+            if (currentPage != 1)
+            {
+                <a href="@Url.Action("ListEntities", Controller, new { Page = previous })">@previous</a>
+            }
+            <text>@currentPage</text>
+
+            if (currentPage + 1 != totalPages || currentPage - 1 != totalPages || currentPage != totalPages)
+            {
+                <a href="@Url.Action("ListEntities", Controller, new { Page = next})">@next</a>
+            }
+
+
+        }
+        else
+        {
+            <text>1</text>
+            <a href="@Url.Action("ListEntities", Controller, new { Page = 2 })">2</a>
+            <a href="@Url.Action("ListEntities", Controller, new { Page = 3 })">3</a>
+        }
+
+        <span>...</span>
+
+        @if (currentPage == totalPages)
+        {
+            <span>@currentPage</span>
+        }
+
+        else
+        {
+            <a href="@Url.Action("ListEntities", Controller, new { Page = totalPages })">@totalPages</a>
+        }*@
+
+
+
+
+
+

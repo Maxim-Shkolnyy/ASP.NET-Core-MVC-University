@@ -1,0 +1,36 @@
+﻿@model (IEnumerable<University.Infrasructure.Models.GroupModel>GroupsList, int NumPages, int CurrentPage)
+
+@{
+    ViewData["Title"] = "Groups";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<a href="@Url.Action("EditGroup", "Groups")">Add group</a>
+
+@if (TempData["message"] != null)
+{
+    <div class="TempMessage">@TempData["message"]</div>
+}
+
+<div class="container">
+
+    @foreach (var group in Model.GroupsList)
+{
+    var cardModel = new University.MVC.Models.CardViewModel
+            {
+                Title = $"Group {group.Id}",
+                Description = group.Name,
+                InfoURL = Url.Action("InfoGroup", "Groups", new { Id = group.Id }),
+                DownTitle = "Students",
+                DownURL = Url.Action("ListEntities", "Students", new { Id = group.CourseID })
+            };
+
+    @Html.Partial("_CardInfoEdit", cardModel)
+}
+</div>
+
+<div class="pagination">
+    @await Html.PartialAsync("_PagedList", (Model.NumPages, Model.CurrentPage))
+</div>

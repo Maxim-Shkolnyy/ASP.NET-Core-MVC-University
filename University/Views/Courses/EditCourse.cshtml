@@ -1,0 +1,19 @@
+﻿@model University.Infrasructure.Models.CourseModel
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.HiddenFor(m => m.Id)
+
+    <label>Course Name</label>
+    @Html.EditorFor(m => m.Name)
+
+    <label>Course Description</label>
+    @Html.EditorFor(m => m.Description)    
+
+    <input type="submit" value="Save"/>
+}
+
+
+

@@ -1,0 +1,27 @@
+﻿@model University.Infrasructure.Models.GroupModel;
+
+@{
+    ViewData["Title"] = "Group info";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+
+    @{
+var cardModel = new University.MVC.Models.CardViewModel
+{
+    Title = $"Group ID: {Model.Id}",
+    Description = $"Group name: {Model.Name}",
+    CourseID = Model.CourseID,
+    InfoURL = Url.Action("EditGroup", "Groups", new { Id = Model.Id }),
+    DownTitle = "Students",
+    DownURL = Url.Action("DeleteGroup", new { Id = Model.Id })
+};
+    }
+
+    @Html.Partial("_CardEditDelete", cardModel)
+
+</div>
+

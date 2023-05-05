@@ -1,0 +1,18 @@
+﻿@model University.Infrasructure.Models.GroupModel;
+
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m=>m.Id)
+
+    <label>Group Name</label>
+    @Html.EditorFor(m=>m.Name)
+
+    <label>Course Name</label>    
+    @Html.DropDownListFor(m => m.CourseID, (IEnumerable<SelectListItem>)ViewBag.ListCourses)
+
+    <input type="submit" value="Save"/>
+}
+
+
+

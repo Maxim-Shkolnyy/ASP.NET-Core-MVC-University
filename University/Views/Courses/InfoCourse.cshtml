@@ -1,0 +1,26 @@
+﻿@model University.Infrasructure.Models.CourseModel;
+
+@{
+    ViewData["Title"] = "Course info";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+
+    @{
+var cardModel = new University.MVC.Models.CardViewModel
+    {
+        Title = $"Course ID: {Model.Id}",
+        Name = $"Course name: {Model.Name} ",
+        Description = $"About: {Model.Description}",
+        InfoURL = Url.Action("EditCourse", "Courses", new { Id = Model.Id }),
+        DownTitle = "Students",
+        DownURL = Url.Action("DeleteCourse", new { Id = Model.Id })
+    };
+    }
+
+    @Html.Partial("_CardEditDelete", cardModel)
+
+</div>

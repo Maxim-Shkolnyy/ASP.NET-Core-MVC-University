@@ -1,0 +1,20 @@
+﻿@model University.MVC.Models.CardViewModel
+
+
+
+<div class="courseWrapper">
+
+    <div class="course">
+        @Model.Title
+       
+        <br/> @Model.Description
+        <br/> @Model.FirstName
+        <br/> @Model.LastName
+    </div>
+    <div class="bottons">
+        <div class="infoButton" onclick="location.href = '@Model.InfoURL';" style="cursor: pointer">Edit</div>        
+        <div class="nestedListBotton" onclick="if(confirm('Are you sure?')){ location.href = '@Model.DownURL'; }" style="cursor: pointer">Delete</div>
+
+        
+    </div>
+</div>
